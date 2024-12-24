@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Navidad</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background:#1F2766;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: rgb(255, 255, 255);
+            font-size: 2.5em;
+            margin: 20px 0;
+        }
+
+        .slider {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slides img {
+            width: 100%;
+            border: none;
+        }
+
+        .text {
+            margin-top: 20px;
+            font-size: 1em;
+            line-height: 1.6;
+            padding: 0 10px;
+        }
+
+        .snowflake {
+            color: #fff;
+            font-size: 2.5em;
+            position: fixed;
+            z-index: 1000;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .text {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .text {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Feliz Navidad, Mi Amor</h1>
+        <div class="slider" id="slider">
+            <div class="slides">
+                <img src="foto4.jpeg" alt="Imagen 1">
+                <img src="foto6.jpeg" alt="Imagen 2">
+                <img src="foto3.jpeg" alt="Imagen 3">
+                <img src="foto1.jpeg" alt="Imagen 3">
+            </div>
+        </div>
+        <p>Nunca es suficiente para mí, porque siempre quiero más de ti. Yo quisiera hacerte más feliz; hoy mañana siempre hasta el fin</p>
+        <p>Me enamore de ti sabiendo lo que eres,sabiendo que nuestro amor no seria facil que tendriamos miles de obstaculos,y aun asi te volveria a elegir una y otra vez</p>
+        <p class="text">Espero que esta Navidad esté llena de alegría, amor y momentos inolvidables. Eres lo mejor que me ha pasado. ¡Te amo!</p>
+    </div>
+
+    <script>
+        // Slider automático
+        let currentIndex = 0;
+        const slides = document.querySelector('.slides');
+        const totalSlides = slides.children.length;
+
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }, 3000);
+
+        // Animación de copos de nieve
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.textContent = '❄';
+
+            const xPosition = Math.random() * window.innerWidth;
+            const duration = Math.random() * 5 + 5; // Entre 5 y 10 segundos
+            const size = Math.random() * 20 + 20; // Entre 20px y 40px
+
+            snowflake.style.left = `${xPosition}px`;
+            snowflake.style.animationDuration = `${duration}s`;
+            snowflake.style.fontSize = `${size}px`;
+
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, duration * 1000);
+        }
+
+        setInterval(createSnowflake, 300);
+    </script>
+</body>
+</html>
