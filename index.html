@@ -105,8 +105,25 @@
         <p>Nunca es suficiente para mí, porque siempre quiero más de ti. Yo quisiera hacerte más feliz; hoy mañana siempre hasta el fin</p>
         <p>Me enamore de ti sabiendo lo que eres,sabiendo que nuestro amor no seria facil que tendriamos miles de obstaculos,y aun asi te volveria a elegir una y otra vez</p>
         <p class="text">Espero que esta Navidad esté llena de alegría, amor y momentos inolvidables. Eres lo mejor que me ha pasado. ¡Te amo!</p>
+        <button id="playMusicBtn">Reproducir Música</button>
     </div>
+   <audio id="background-audio" autoplay loop>
+        <source src="v.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+    <script>
+        // Iniciar audio con un evento de usuario (clic)
+        const playMusicBtn = document.getElementById('playMusicBtn');
+        const audio = document.getElementById('background-audio');
 
+        playMusicBtn.addEventListener('click', () => {
+            audio.play().then(() => {
+                playMusicBtn.style.display = 'none'; // Ocultar el botón después de reproducir música
+            }).catch(error => {
+                console.log('Error al reproducir la música:', error);
+            });
+        });
+    </script>
     <script>
         // Slider automático
         let currentIndex = 0;
